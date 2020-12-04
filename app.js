@@ -1,13 +1,13 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +23,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
@@ -35,16 +35,16 @@ if (process.env.NODE_ENV !== "production") {
   //Set up watcher to watch all files in ./server/app
   const watcher = chokidar.watch("./server/app");
 
-  watcher.on("ready", function() {
+  watcher.on("ready", () => {
     //On any file change event
     //You could customise this to only run on new/save/delete etc
     //This will also pass the file modified into the callback
     //however for this example we aren't using that information
-    watcher.on("all", function() {
+    watcher.on("all", () => {
       console.log("Reloading server...");
       //Loop through the cached modules
       //The "id" is the FULL path to the cached module
-      Object.keys(require.cache).forEach(function(id) {
+      Object.keys(require.cache).forEach((id) => {
         //Get the local path to the module
         const localId = id.substr(process.cwd().length);
 
@@ -62,7 +62,7 @@ if (process.env.NODE_ENV !== "production") {
 
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

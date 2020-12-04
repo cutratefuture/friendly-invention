@@ -4,7 +4,9 @@
   "private": true,
   "author": "cutratefuture & PyOfile",
   "scripts": {
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "p1": "sh ~/.bash/bin/gitpull.sh",
+    "p2": "sh ~/.bash/bin/gitpush.sh"
   },
   "dependencies": {
     "express-ejs-layouts": "^2.5.0",
