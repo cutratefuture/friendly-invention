@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/page2', (req, res, next) => {
-  res.render('page2', { title: 'Express Template' });
+  res.render('page2', { title: 'Page 2' });
 });
 
 
